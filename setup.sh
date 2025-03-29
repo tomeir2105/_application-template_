@@ -15,7 +15,7 @@ show_help() {
   echo "Usage: $0 [-e <project_folder>] [-h]"
   echo
   echo "Options:"
-  echo "  -e    Specify the project folder (default is 'project')."
+  echo "  -e    Specify the project folder"
   echo "  -h    Show this help message."
   echo
   echo "This script sets up a virtual environment, installs necessary Python packages, and configures your project."
@@ -35,27 +35,27 @@ if [ -z "$project_folder" ]; then
   exit 1
 fi
 
-
-# List of tools to check
-tools=(
-  "python3"
-  "python3-pip"
-  "python3-pipx"
-  "makeself"
-  "sqlite3"
-)
-
 sudo apt update
+exit_status=$?
+if [ $exit_status -eq 0 ]; then
+    echo "apt database updated successfully."
+else
+    echo "Error: apt update failed with exit status $exit_status."
+    exit 1
+fi
 
 # Install python3-venv
 if ! dpkg -l | grep -q python3-venv; then
-  echo "python3-venv is not installed. Installing it now..."
-  sudo apt install -y python3-venv
-else
-  echo "python3-venv is already installed."
+    sudo apt install -y python3-venv
+    if dpkg -l | grep -q python3-venv; then
+        echo "python3-venv installed successfully."
+    else
+        echo "Failed to install python3-venv."
+        exit 1
+    fi
 fi
 
-# Install packages
+# Install requested task packages
 install_tool() {
   if ! command -v "$1" &> /dev/null; then
     echo "$1 is not installed. Installing it now..."
