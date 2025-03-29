@@ -10,6 +10,12 @@ This script automates the setup of a Python project environment by installing ne
 - **Generate a `requirements.txt`** file with common dependencies such as Flask, SQLAlchemy, and Quart.
 - **Install Python dependencies** using the `requirements.txt` file.
 
+## My learning remarks
+- venv must be installed before pipx.
+- The shell context closes when the script finish runinng, causing the venv to deactivate in the end of the script.
+- There is "required" option in getops, you need to check it yourself.
+- requirements.txt saved me a lot of time :-)
+
 ## Prerequisites
 
 Before running the script, ensure that your system has:
