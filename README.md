@@ -12,7 +12,7 @@ This script automates the setup of a Python project environment by installing ne
 
 ## My learning remarks
 - venv must be installed before pipx.
-- The shell context closes when the script finish runinng, causing the venv to deactivate in the end of the script.
+- The venv to deactivates in the end of the script because the shell context closes.
 - There is "required" option in getops, you need to check it yourself.
 - requirements.txt saved me a lot of time :-)
 
