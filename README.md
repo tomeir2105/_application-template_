@@ -12,6 +12,7 @@ This script automates the setup of a Python project environment by installing ne
 
 ## My learning remarks
 - venv must be installed before pipx.
+- pip package inside python code can only manage the packages, it can not create or activate venv.
 - The virtual environment deactivates in the end of the script because the shell context closes.
 - There is no "required" option in getops, you need to check it yourself.
 - requirements.txt saved me a lot of time :-)
